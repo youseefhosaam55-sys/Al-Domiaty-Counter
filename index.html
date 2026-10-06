@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="woody">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Al-Domiaty Counter & Timber | Premium Blockboard Solutions (الدمياطي للكونتر)</title>
+  <meta name="description" content="Al-Domiaty is a premier timber & blockboard manufacturer and shop. Specializing in high-performance MDF Blockboard, Ply Face Veneer Blockboard, and MDF Sandwich Blockboard with kiln-dried pine cores.">
+  <meta name="keywords" content="Al-Domiaty, counter wood, blockboard, MDF blockboard, ply face veneer, MDF sandwich blockboard, Damietta timber, كونتر دمياطي, خشب كونتر">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/logo-icon.png">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <span class="badge-pulse"></span>
+        <span data-i18n="topbar_badge">Damietta Heritage Timber Craftsmanship</span>
+        <span class="sep">•</span>
+        <span data-i18n="topbar_delivery">Factory Direct Delivery & Wholesale Supply</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="tel:01015176070" class="top-link">
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>01015176070</span>
+        </a>
+        <button id="langToggleBtn" class="lang-switch-btn" title="Toggle Language / تغيير اللغة">
+          <span class="lang-icon">🌐</span>
+          <span id="langLabel">العربية</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation -->
+  <header class="navbar" id="mainHeader">
+    <div class="container nav-inner">
+      <a href="#" class="brand-logo" aria-label="Al-Domiaty - الدمياطي للاستيراد والتصدير">
+        <div class="logo-mark">
+          <img src="assets/logo.png" alt="الدمياطي للاستيراد والتصدير - Al-Domiaty" class="brand-logo-img">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">AL-DOMIATY</span>
+          <span class="brand-subtitle" data-i18n="brand_subtitle">IMPORT & EXPORT • TIMBER</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="#products" class="nav-link" data-i18n="nav_products">Products</a>
+        <a href="#anatomy" class="nav-link" data-i18n="nav_anatomy">Core Anatomy</a>
+        <a href="#calculator" class="nav-link" data-i18n="nav_calculator">Board Estimator</a>
+        <a href="#veneers" class="nav-link" data-i18n="nav_veneers">Veneer Finishes</a>
+        <a href="#quality" class="nav-link" data-i18n="nav_quality">Why Al-Domiaty</a>
+        <a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#calculator" class="btn btn-outline" data-i18n="btn_calc">
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+          <span data-i18n="nav_btn_calc">Estimator</span>
+        </a>
+        <a href="https://wa.me/201015176070?text=Hello%20Al-Domiaty%20Team%2C%20I%20am%20inquiring%20about%20your%20blockboard%20products." target="_blank" class="btn btn-primary" id="headerWhatsappBtn">
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.96.524 1.961.817 2.796.818 3.182 0 5.768-2.587 5.768-5.767 0-3.18-2.586-5.806-5.768-5.806zm3.39 8.163c-.144.405-.837.774-1.17.823-.312.043-.681.077-2.003-.456-1.585-.638-2.617-2.26-2.697-2.366-.079-.107-.64-853-.64-1.628 0-.774.407-1.155.552-1.311.144-.155.316-.194.422-.194.106 0 .211.002.304.006.098.005.228-.037.356.27.132.316.45 1.096.49 1.176.04.08.067.173.013.28-.053.107-.08.173-.16.267-.079.093-.167.208-.239.28-.079.08-.162.167-.069.327.092.16.411.678.882 1.097.607.541 1.119.708 1.278.788.16.079.253.066.347-.04.093-.107.4-.467.507-.627.107-.16.213-.133.36-.08.146.053.931.44 1.091.52.16.08.267.12.306.187.04.066.04.386-.104.791z"/></svg>
+          <span data-i18n="btn_whatsapp">Quick Quote</span>
+        </a>
+        <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="hero-backdrop" style="background-image: url('assets/hero-wood.jpg');">
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <span class="badge-wood-chip">
+          <svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <span data-i18n="hero_pill">100% Solid Kiln-Dried Pine Core</span>
+        </span>
+        <span class="heritage-tag" data-i18n="hero_origin">Damietta, Egypt</span>
+      </div>
+
+      <h1 class="hero-title" data-i18n="hero_title">
+        The Master Standard in <span class="wood-gradient-text">Engineered Blockboard</span> & Counter Panels
+      </h1>
+
+      <p class="hero-description" data-i18n="hero_desc">
+        Born from Damietta’s renowned timber legacy, <strong>Al-Domiaty</strong> produces the region's most dimensionally stable blockboards. Engineered with kiln-dried solid timber batons, zero-cavity calibration, and ultra-flat skins for elite furniture makers and architectural millwork.
+      </p>
+
+      <!-- 3 Product Fast Links -->
+      <div class="hero-product-pills">
+        <a href="#mdf-blockboard" class="product-chip">
+          <span class="chip-number">01</span>
+          <div class="chip-info">
+            <strong data-i18n="prod1_name">MDF Blockboard</strong>
+            <span data-i18n="prod1_sub">Smooth Face • Paint & CNC</span>
+          </div>
+        </a>
+        <a href="#ply-veneer" class="product-chip">
+          <span class="chip-number">02</span>
+          <div class="chip-info">
+            <strong data-i18n="prod2_name">Ply Face Veneer</strong>
+            <span data-i18n="prod2_sub">Natural Oak & Walnut Grain</span>
+          </div>
+        </a>
+        <a href="#mdf-sandwich" class="product-chip">
+          <span class="chip-number">03</span>
+          <div class="chip-info">
+            <strong data-i18n="prod3_name">MDF Sandwich</strong>
+            <span data-i18n="prod3_sub">Multi-Layer Heavy Duty Rigid</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="hero-cta-group">
+        <a href="#products" class="btn btn-hero btn-primary" data-i18n="hero_cta_explore">
+          <span>Explore Product Line</span>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#calculator" class="btn btn-hero btn-glass" data-i18n="hero_cta_calc">
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Calculate Sheets Needed</span>
+        </a>
+      </div>
+
+      <!-- Trust Metrics Bar -->
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-val">8% - 10%</div>
+          <div class="stat-lbl" data-i18n="stat_moisture">Kiln Moisture Control</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-card">
+          <div class="stat-val">0 Cavity</div>
+          <div class="stat-lbl" data-i18n="stat_cavity">Solid Core Guarantee</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-card">
+          <div class="stat-val">16–25<small>mm</small></div>
+          <div class="stat-lbl" data-i18n="stat_thickness">Standard Calibrations</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-card">
+          <div class="stat-val">E1 Grade</div>
+          <div class="stat-lbl" data-i18n="stat_eco">Low-VOC Bonding Resin</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Anatomy Teaser -->
+  <section class="section anatomy-section" id="anatomy">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag" data-i18n="anatomy_tag">Engineering & Build</span>
+        <h2 class="section-title" data-i18n="anatomy_title">Why Domiaty Blockboard Stands Above Standard Wood</h2>
+        <p class="section-subtitle" data-i18n="anatomy_subtitle">
+          Unlike hollow or uncalibrated commercial boards, our counter boards are built with seasoned finger-jointed timber strips to prevent bowing, cupping, and screw stripping.
+        </p>
+      </div>
+
+      <div class="anatomy-visual-container">
+        <div class="anatomy-interactive-box">
+          <div class="anatomy-layers-stack">
+            <!-- Top Layer -->
+            <div class="layer-bar layer-mdf" data-layer="face" id="layerFace">
+              <span class="layer-pill">Layer 1</span>
+              <div class="layer-detail">
+                <strong data-i18n="layer_face_title">Smooth Calibrated Face (MDF / Natural Veneer)</strong>
+                <p data-i18n="layer_face_desc">2.5mm - 3.5mm ultra-dense calibrated surface. Defect-free for flawless paint finish, vacuum press, or high-pressure laminate.</p>
+              </div>
+            </div>
+            <!-- Glue Line -->
+            <div class="layer-bar layer-glue" data-layer="resin" id="layerResin">
+              <span class="layer-pill">Resin</span>
+              <div class="layer-detail">
+                <strong data-i18n="layer_glue_title">E1 Moisture-Resistant Adhesive Line</strong>
+                <p data-i18n="layer_glue_desc">Hot-pressed under 180°C and 1.8 MPa hydraulic pressure for permanent delamination resistance.</p>
+              </div>
+            </div>
+            <!-- Core Layer -->
+            <div class="layer-bar layer-core active" data-layer="core" id="layerCore">
+              <span class="layer-pill">Core</span>
+              <div class="layer-detail">
+                <strong data-i18n="layer_core_title">Kiln-Dried Solid Pine / Hardwood Batons</strong>
+                <p data-i18n="layer_core_desc">Edge-glued solid timber strips (28mm–32mm width). Sourced from sustainable forests, seasoned to 8-10% moisture content.</p>
+              </div>
+            </div>
+            <!-- Bottom Glue Line -->
+            <div class="layer-bar layer-glue" data-layer="resin">
+              <span class="layer-pill">Resin</span>
+              <div class="layer-detail">
+                <strong data-i18n="layer_glue_title">E1 Moisture-Resistant Adhesive Line</strong>
+              </div>
+            </div>
+            <!-- Bottom Layer -->
+            <div class="layer-bar layer-mdf" data-layer="back">
+              <span class="layer-pill">Layer 5</span>
+              <div class="layer-detail">
+                <strong data-i18n="layer_back_title">Symmetrical Balancing Backer Sheet</strong>
+                <p data-i18n="layer_back_desc">Identical density backer ensures absolute tension equilibrium across both faces, eliminating internal warping stresses.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="anatomy-controls">
+            <span class="controls-hint" data-i18n="anatomy_hint">Interactive Cross-Section Inspection</span>
+            <div class="btn-group">
+              <button class="btn btn-sm btn-filter active" data-mode="all" onclick="filterLayers('all')">Full Panel</button>
+              <button class="btn btn-sm btn-filter" data-mode="core" onclick="filterLayers('core')">Inspect Core</button>
+              <button class="btn btn-sm btn-filter" data-mode="faces" onclick="filterLayers('faces')">Inspect Faces</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section: The 3 Core Products -->
+  <section class="section products-section" id="products">
+    <div class="container">
+      <div class="section-header">
+        <div class="header-left">
+          <span class="section-tag" data-i18n="prod_tag">The Signature Three</span>
+          <h2 class="section-title" data-i18n="prod_title">Engineered Timber Panels & Blockboards</h2>
+        </div>
+        <p class="header-right-desc" data-i18n="prod_desc">
+          We specialize exclusively in three premier blockboard formulations engineered for precision cabinetry, high-end furniture fabrication, and structural architectural partitions.
+        </p>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- PRODUCT 1: MDF Blockboard -->
+        <article class="product-card" id="mdf-blockboard">
+          <div class="product-badge">
+            <span class="badge-num">01</span>
+            <span class="badge-cat" data-i18n="p1_cat">Smooth Face Panel</span>
+          </div>
+
+          <div class="product-image-wrap">
+            <img src="assets/mdf-blockboard.jpg" alt="MDF Blockboard cross-section and surface" loading="lazy" class="product-img">
+            <div class="product-img-overlay">
+              <span class="overlay-tag" data-i18n="p1_overlay_tag">Ideal for Spray Paint & CNC Routing</span>
+            </div>
+          </div>
+
+          <div class="product-body">
+            <h3 class="product-title" data-i18n="p1_title">MDF Blockboard</h3>
+            <span class="arabic-name">كونتر إم دي إف (MDF Blok Board)</span>
+            
+            <p class="product-summary" data-i18n="p1_summary">
+              A solid blockboard timber core fused symmetrically with calibrated High-Density MDF faces on both sides. Offers the lightweight screw holding of solid timber with the mirror-smooth, uniform surface of MDF.
+            </p>
+
+            <div class="specs-table">
+              <div class="spec-row">
+                <span class="spec-key" data-i18n="spec_core">Core Construction:</span>
+                <span class="spec-val" data-i18n="p1_spec_core">Kiln-Dried Solid Pine Batons</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key" data-i18n="spec_faces">Face & Back:</span>
+                <span class="spec-val" data-i18n="p1_spec_faces">Smooth Calibrated MDF (2.5mm - 3mm)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key" data-i18n="spec_thicknesses">Thicknesses:</span>
+                <span class="spec-val">16mm, 18mm, 22mm, 25mm</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key" data-i18n="spec_size">Dimensions:</span>
+                <span class="spec-val">1220 x 2440 mm (4' x 8')</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key" data-i18n="spec_density">Average Density:</span>
+                <span class="spec-val">650 - 680 kg/m³</span>
+              </div>
+            </div>
+
+            <div class="product-highlights">
+              <span class="highlight-pill">✓ Zero Telegraphing</span>
+              <span class="highlight-pill">✓ CNC Groove Friendly</span>
+              <span class="highlight-pill">✓ High Screw Retention</span>
+            </div>
+
+            <div class="product-actions">
+              <button class="btn btn-primary btn-block" onclick="openOrderModal('MDF Blockboard', '18mm')">
+                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <span data-i18n="btn_order_inquiry">Request Price & Specs</span>
+              </button>
+              <button class="btn btn-wood-soft" onclick="quickCalculate('mdf-blockboard')">
+                <span data-i18n="btn_calc_this">Estimate Sheets</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCT 2: Ply Face Veneer Blockboard -->
+        <article class="product-card featured-product" id="ply-veneer">
+          <div class="product-badge">
+            <span class="badge-num">02</span>
+            <span class="badge-cat featured-pill" data-i18n="p2_cat">Luxury Natural Veneer</span>
+          </div>
+
+          <div class="product-image-wrap">
+            <img src="assets/ply-veneer-blockboard.jpg" alt="Ply Face Veneer Blockboard natural oak grain" loading="lazy" class="product-img">
+            <div class="product-img-overlay">
+              <span class="overlay-tag" data-i18n="p2_overlay_tag">Genuine Natural Hardwood Veneer</span>
+            </div>
+          </div>
+
+          <div class="product-body">
+            <h3 class="product-title" data-i18n="p2_title">Ply Face Veneer Blockboard</h3>
+            <span class="arabic-name">كونتر وش قشرة طبيعي (Ply Face Veneer)</span>
+            
+            <p class="product-summary" data-i18n="p2_summary">
+              Combines the structural integrity of a solid blockboard core with cross-banded veneers and hand-selected natural hardwood face veneers. Delivers the authentic luxury grain of White Oak, American Walnut, Beech, or Teak.
+            </p>
+
+            <div class="specs-table">
+              <div class="spec-row">
+                <span class="spec-key" data-i18n="spec_core">Core Construction:</span>
+                <span class="spec-val" data-i18n="p2_spec_core">Finger-Jointed Solid Timber Batons</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key" data-i18n="spec_faces">Face Options:</span>
+                <span class="spec-val" data-i18n="p2_spec_faces">White Oak, Walnut, Beech, Sapelli</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key" data-i18n="spec_veneer_grade">Veneer Grade:</span>
+                <span class="spec-val" data-i18n="p2_spec_grade">Grade A/B Book-Matched (0.5-0.6mm)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key" data-i18n="spec_thicknesses">Thicknesses:</span>
+                <span class="spec-val">16mm, 18mm, 22mm</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key" data-i18n="spec_finish">Surface State:</span>
+                <span class="spec-val" data-i18n="p2_spec_finish">240-Grit Pre-Sanded Ready for Stain</span>
+              </div>
+            </div>
+
+            <div class="product-highlights">
+              <span class="highlight-pill">✓ Rich Cathedral Grain</span>
+              <span class="highlight-pill">✓ Stain & Polish Ready</span>
+              <span class="highlight-pill">✓ Luxury Damietta Finish</span>
+            </div>
+
+            <div class="product-actions">
+              <button class="btn btn-primary btn-block" onclick="openOrderModal('Ply Face Veneer Blockboard', '18mm')">
+                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <span data-i18n="btn_order_inquiry">Request Price & Specs</span>
+              </button>
+              <button class="btn btn-wood-soft" onclick="quickCalculate('ply-veneer')">
+                <span data-i18n="btn_calc_this">Estimate Sheets</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCT 3: MDF Sandwich Blockboard -->
+        <article class="product-card" id="mdf-sandwich">
+          <div class="product-badge">
+            <span class="badge-num">03</span>
+            <span class="badge-cat" data-i18n="p3_cat">Heavy-Duty Composite</span>
+          </div>
+
+          <div class="product-image-wrap">
+            <img src="assets/mdf-sandwich-blockboard.jpg" alt="MDF Sandwich Blockboard 5-layer cross section" loading="lazy" class="product-img">
+            <div class="product-img-overlay">
+              <span class="overlay-tag" data-i18n="p3_overlay_tag">Maximum Warp-Resistant Rigidity</span>
+            </div>
+          </div>
+
+          <div class="product-body">
+            <h3 class="product-title" data-i18n="p3_title">MDF Sandwich Blockboard</h3>
+            <span class="arabic-name">كونتر ساندوتش إم دي إف (MDF Sandwich)</span>
+            
+            <p class="product-summary" data-i18n="p3_summary">
+              An advanced 5-layer composite engineered panel. Symmetrically sandwiches high-density MDF outer skins and cross-ply stabilization barriers around a heavy-duty finger-jointed timber core to provide unmatched bending strength.
+            </p>
+
+            <div class="specs-table">
+              <div class="spec-row">
+                <span class="spec-key" data-i18n="spec_core">Core Construction:</span>
+                <span class="spec-val" data-i18n="p3_spec_core">Engineered Solid Pine Strip Core</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key" data-i18n="spec_structure">Structure:</span>
+                <span class="spec-val" data-i18n="p3_spec_struct">5-Layer Symmetrical Sandwich</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key" data-i18n="spec_warp">Warp Resistance:</span>
+                <span class="spec-val" data-i18n="p3_spec_warp">&lt; 1mm / Linear Meter deflection</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key" data-i18n="spec_thicknesses">Thicknesses:</span>
+                <span class="spec-val">18mm, 22mm, 25mm, 30mm</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-key" data-i18n="spec_screwhold">Screw Retention:</span>
+                <span class="spec-val">&gt; 1350 N (Edge & Face)</span>
+              </div>
+            </div>
+
+            <div class="product-highlights">
+              <span class="highlight-pill">✓ 2.4m Door Warp Proof</span>
+              <span class="highlight-pill">✓ Heavy Load Bearing</span>
+              <span class="highlight-pill">✓ Zero Core Shrinkage</span>
+            </div>
+
+            <div class="product-actions">
+              <button class="btn btn-primary btn-block" onclick="openOrderModal('MDF Sandwich Blockboard', '18mm')">
+                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <span data-i18n="btn_order_inquiry">Request Price & Specs</span>
+              </button>
+              <button class="btn btn-wood-soft" onclick="quickCalculate('mdf-sandwich')">
+                <span data-i18n="btn_calc_this">Estimate Sheets</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Veneer Texture Selector Section -->
+  <section class="section veneers-section" id="veneers">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag" data-i18n="veneer_tag">Finishes & Textures</span>
+        <h2 class="section-title" data-i18n="veneer_title">Explore Real Wood Veneer Faces</h2>
+        <p class="section-subtitle" data-i18n="veneer_subtitle">
+          Our Ply Face Veneer Blockboards are produced with authenticated, book-matched natural wood grains. Preview the rich timber tones available for your bespoke furniture.
+        </p>
+      </div>
+
+      <div class="veneer-showcase-card">
+        <div class="veneer-display-stage" id="veneerDisplayStage">
+          <div class="veneer-texture-sample" id="veneerSampleView">
+            <div class="veneer-reflection"></div>
+            <div class="veneer-info-overlay">
+              <span class="veneer-origin-badge" id="veneerOrigin">North America</span>
+              <h3 class="veneer-name" id="veneerName">Natural White Oak (أرو أبيض طبيعي)</h3>
+              <p class="veneer-desc" id="veneerDesc">Prominent, elegant cathedral grain with golden undertones. Highly sought after for Scandinavian, modern minimalist, and timeless luxury cabinetry.</p>
+              <div class="veneer-properties">
+                <span>Hardness: <strong>High</strong></span>
+                <span>Tone: <strong>Warm Honey</strong></span>
+                <span>Pore: <strong>Open Grain</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="veneer-picker-grid">
+          <!-- Swatch 1 -->
+          <button class="swatch-btn active" data-veneer="oak" onclick="selectVeneer('oak')">
+            <div class="swatch-wood-preview oak-swatch"></div>
+            <div class="swatch-meta">
+              <strong>White Oak</strong>
+              <span>قشرة أرو</span>
+            </div>
+          </button>
+          <!-- Swatch 2 -->
+          <button class="swatch-btn" data-veneer="walnut" onclick="selectVeneer('walnut')">
+            <div class="swatch-wood-preview walnut-swatch"></div>
+            <div class="swatch-meta">
+              <strong>American Walnut</strong>
+              <span>قشرة جوز تركي / أمريكي</span>
+            </div>
+          </button>
+          <!-- Swatch 3 -->
+          <button class="swatch-btn" data-veneer="beech" onclick="selectVeneer('beech')">
+            <div class="swatch-wood-preview beech-swatch"></div>
+            <div class="swatch-meta">
+              <strong>Steamed Beech</strong>
+              <span>قشرة زان مبخر</span>
+            </div>
+          </button>
+          <!-- Swatch 4 -->
+          <button class="swatch-btn" data-veneer="sapelli" onclick="selectVeneer('sapelli')">
+            <div class="swatch-wood-preview sapelli-swatch"></div>
+            <div class="swatch-meta">
+              <strong>Sapelli Mahogany</strong>
+              <span>قشرة سابيلي ماهوجني</span>
+            </div>
+          </button>
+          <!-- Swatch 5 -->
+          <button class="swatch-btn" data-veneer="teak" onclick="selectVeneer('teak')">
+            <div class="swatch-wood-preview teak-swatch"></div>
+            <div class="swatch-meta">
+              <strong>Golden Teak</strong>
+              <span>قشرة تيك طبيعي</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Sheet / Board Estimator Calculator -->
+  <section class="section calculator-section" id="calculator">
+    <div class="container">
+      <div class="calculator-wrapper">
+        <div class="calc-intro">
+          <span class="section-tag" data-i18n="calc_tag">Smart Timber Tool</span>
+          <h2 class="calc-title" data-i18n="calc_title">Board & Sheet Requirement Estimator</h2>
+          <p class="calc-desc" data-i18n="calc_desc">
+            Planning a kitchen carcase, custom wardrobes, or an entire commercial fit-out? Calculate exact sheet quantities of <strong>1220 x 2440 mm</strong> (4x8 ft) counter panels, account for cutting saw kerf wastage, and get an instant quote directly via WhatsApp.
+          </p>
+
+          <div class="calc-benefits">
+            <div class="benefit-item">
+              <svg class="icon-sm text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="calc_b1">Standard 1220 x 2440 mm (2.977 m² per sheet)</span>
+            </div>
+            <div class="benefit-item">
+              <svg class="icon-sm text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="calc_b2">Automatic weight & volume estimates</span>
+            </div>
+            <div class="benefit-item">
+              <svg class="icon-sm text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="calc_b3">Pre-formatted WhatsApp inquiry builder</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-card">
+          <div class="calc-form">
+            <!-- Product selection -->
+            <div class="form-group">
+              <label for="calcProduct" class="form-label" data-i18n="calc_lbl_product">Select Blockboard Formulation</label>
+              <select id="calcProduct" class="form-select">
+                <option value="MDF Blockboard" data-density="650">01. MDF Blockboard (Smooth Face / Paint Ready)</option>
+                <option value="Ply Face Veneer Blockboard" data-density="670">02. Ply Face Veneer Blockboard (Natural Wood Face)</option>
+                <option value="MDF Sandwich Blockboard" data-density="700">03. MDF Sandwich Blockboard (5-Layer Rigid Structural)</option>
+              </select>
+            </div>
+
+            <!-- Thickness -->
+            <div class="form-group">
+              <label class="form-label" data-i18n="calc_lbl_thick">Board Thickness</label>
+              <div class="thickness-radio-group">
+                <label class="radio-pill">
+                  <input type="radio" name="boardThick" value="16" onchange="runCalculation()">
+                  <span>16 mm</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="boardThick" value="18" checked onchange="runCalculation()">
+                  <span>18 mm</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="boardThick" value="22" onchange="runCalculation()">
+                  <span>22 mm</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="boardThick" value="25" onchange="runCalculation()">
+                  <span>25 mm</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Input Mode Selector -->
+            <div class="calc-tabs">
+              <button type="button" class="tab-btn active" id="tabByArea" onclick="setCalcMode('area')" data-i18n="calc_tab_area">Calculate by Total Area (m²)</button>
+              <button type="button" class="tab-btn" id="tabByPieces" onclick="setCalcMode('pieces')" data-i18n="calc_tab_pieces">Calculate by Cabinet Pieces</button>
+            </div>
+
+            <!-- Area Mode Inputs -->
+            <div class="calc-mode-content" id="modeArea">
+              <div class="form-group">
+                <div class="label-with-val">
+                  <label for="areaInput" class="form-label" data-i18n="calc_lbl_total_area">Total Net Surface Needed (m²)</label>
+                  <span id="areaInputVal" class="val-badge">15 m²</span>
+                </div>
+                <input type="range" id="areaInput" min="1" max="250" value="15" step="0.5" class="form-range" oninput="runCalculation()">
+                <div class="range-marks">
+                  <span>1 m²</span>
+                  <span>50 m²</span>
+                  <span>100 m²</span>
+                  <span>250 m²</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pieces Mode Inputs -->
+            <div class="calc-mode-content hidden" id="modePieces">
+              <div class="pieces-row">
+                <div class="form-group">
+                  <label class="form-label" data-i18n="calc_lbl_part_len">Length (cm)</label>
+                  <input type="number" id="pieceLength" class="form-control" value="200" min="10" max="244" oninput="runCalculation()">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" data-i18n="calc_lbl_part_wid">Width (cm)</label>
+                  <input type="number" id="pieceWidth" class="form-control" value="60" min="10" max="122" oninput="runCalculation()">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" data-i18n="calc_lbl_qty">Quantity</label>
+                  <input type="number" id="pieceQty" class="form-control" value="12" min="1" max="500" oninput="runCalculation()">
+                </div>
+              </div>
+            </div>
+
+            <!-- Wastage buffer -->
+            <div class="form-group">
+              <div class="label-with-val">
+                <label for="wastageInput" class="form-label" data-i18n="calc_lbl_waste">Cutting Kerf & Wastage Allowance</label>
+                <span id="wastageInputVal" class="val-badge">10%</span>
+              </div>
+              <input type="range" id="wastageInput" min="0" max="25" value="10" step="1" class="form-range" oninput="runCalculation()">
+              <p class="form-hint" data-i18n="calc_waste_hint">Recommended: 10% for standard cabinetry, 15% for complex angle cuts.</p>
+            </div>
+
+            <!-- Results Summary Card -->
+            <div class="calc-results-card">
+              <div class="result-primary">
+                <span class="result-label" data-i18n="calc_res_sheets">Estimated Sheets Needed:</span>
+                <span class="result-big-num" id="resSheets">6 <small>Sheets</small></span>
+              </div>
+
+              <div class="result-details-grid">
+                <div class="res-item">
+                  <span class="res-lbl" data-i18n="calc_res_gross_area">Gross Area:</span>
+                  <strong class="res-val" id="resGrossArea">16.50 m²</strong>
+                </div>
+                <div class="res-item">
+                  <span class="res-lbl" data-i18n="calc_res_weight">Total Weight:</span>
+                  <strong class="res-val" id="resWeight">~208 kg</strong>
+                </div>
+                <div class="res-item">
+                  <span class="res-lbl" data-i18n="calc_res_volume">Volume:</span>
+                  <strong class="res-val" id="resVolume">0.32 m³</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- WhatsApp Action -->
+            <button type="button" class="btn btn-whatsapp btn-block" onclick="sendCalculatedQuoteToWhatsApp()">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.96.524 1.961.817 2.796.818 3.182 0 5.768-2.587 5.768-5.767 0-3.18-2.586-5.806-5.768-5.806zm3.39 8.163c-.144.405-.837.774-1.17.823-.312.043-.681.077-2.003-.456-1.585-.638-2.617-2.26-2.697-2.366-.079-.107-.64-853-.64-1.628 0-.774.407-1.155.552-1.311.144-.155.316-.194.422-.194.106 0 .211.002.304.006.098.005.228-.037.356.27.132.316.45 1.096.49 1.176.04.08.067.173.013.28-.053.107-.08.173-.16.267-.079.093-.167.208-.239.28-.079.08-.162.167-.069.327.092.16.411.678.882 1.097.607.541 1.119.708 1.278.788.16.079.253.066.347-.04.093-.107.4-.467.507-.627.107-.16.213-.133.36-.08.146.053.931.44 1.091.52.16.08.267.12.306.187.04.066.04.386-.104.791z"/></svg>
+              <span data-i18n="calc_btn_wa">Send Quote Request via WhatsApp</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Comparison Table -->
+  <section class="section matrix-section" id="comparison">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag" data-i18n="comp_tag">Side-by-Side Comparison</span>
+        <h2 class="section-title" data-i18n="comp_title">Choose the Perfect Board For Your Application</h2>
+        <p class="section-subtitle" data-i18n="comp_subtitle">Detailed technical evaluation across our three product formulations.</p>
+      </div>
+
+      <div class="table-responsive">
+        <table class="specs-matrix-table">
+          <thead>
+            <tr>
+              <th data-i18n="th_feature">Technical Feature</th>
+              <th class="col-highlight">
+                <strong>MDF Blockboard</strong>
+                <span>(كونتر إم دي إف)</span>
+              </th>
+              <th>
+                <strong>Ply Face Veneer</strong>
+                <span>(كونتر وش قشرة)</span>
+              </th>
+              <th>
+                <strong>MDF Sandwich</strong>
+                <span>(كونتر ساندوتش)</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feature-title" data-i18n="tr_core">Core Construction</td>
+              <td>Kiln-Dried Solid Pine Batons</td>
+              <td>Kiln-Dried Solid Pine Batons</td>
+              <td>Reinforced Finger-Jointed Pine Core</td>
+            </tr>
+            <tr>
+              <td class="feature-title" data-i18n="tr_outer">Outer Skin Material</td>
+              <td>High-Density Smooth Calibrated MDF</td>
+              <td>Grade A/B Natural Hardwood Veneer</td>
+              <td>Dual-Layer Calibrated MDF Skins</td>
+            </tr>
+            <tr>
+              <td class="feature-title" data-i18n="tr_surface">Surface Smoothness</td>
+              <td>★★★★★ (Mirror Flat)</td>
+              <td>★★★★☆ (Natural Grain Texture)</td>
+              <td>★★★★★ (Mirror Flat)</td>
+            </tr>
+            <tr>
+              <td class="feature-title" data-i18n="tr_finish_ready">Finishing Compatibility</td>
+              <td>Spray Paint, Lacquer, PVC Thermo-foil</td>
+              <td>Clear Stain, Varnish, Polyurethane</td>
+              <td>Laminate, Acrylic, Heavy Paint</td>
+            </tr>
+            <tr>
+              <td class="feature-title" data-i18n="tr_screwhold">Screw Retention Capacity</td>
+              <td>High (&gt; 1100 N)</td>
+              <td>High (&gt; 1150 N)</td>
+              <td>Exceptional (&gt; 1350 N)</td>
+            </tr>
+            <tr>
+              <td class="feature-title" data-i18n="tr_warp_resist">Anti-Warping Performance</td>
+              <td>Very High</td>
+              <td>High</td>
+              <td>Maximum (Engineered Balance)</td>
+            </tr>
+            <tr>
+              <td class="feature-title" data-i18n="tr_best_use">Primary Application</td>
+              <td>Kitchen carcases, CNC routed cabinet doors, smooth painted furniture</td>
+              <td>Luxury dining tables, executive desks, natural timber wall paneling</td>
+              <td>Full-height 2.4m wardrobe doors, heavy load bookshelves, acoustic partitions</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Damietta Heritage & Quality Pillars -->
+  <section class="section quality-section" id="quality">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag" data-i18n="qual_tag">The Damietta Standard</span>
+        <h2 class="section-title" data-i18n="qual_title">Built With Uncompromising Timber Discipline</h2>
+        <p class="section-subtitle" data-i18n="qual_subtitle">
+          In furniture making, a board is only as reliable as its internal core. Here is how Al-Domiaty guarantees zero failures in your workshop.
+        </p>
+      </div>
+
+      <div class="quality-grid">
+        <div class="quality-card">
+          <div class="quality-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3 data-i18n="q1_title">Kiln-Drying Precision</h3>
+          <p data-i18n="q1_desc">Timber batons are seasoned in computerized kilns down to an exact 8-10% moisture equilibrium, preventing post-manufacture cracking, shrinkage, or swelling.</p>
+        </div>
+
+        <div class="quality-card">
+          <div class="quality-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+          </div>
+          <h3 data-i18n="q2_title">Zero Hollow Cavities</h3>
+          <p data-i18n="q2_desc">Baton edges are tightly calibrated and machine-assembled under lateral hydraulic pressure to eliminate internal air gaps and hollow pockets completely.</p>
+        </div>
+
+        <div class="quality-card">
+          <div class="quality-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 data-i18n="q3_title">Eco-Safe E1 Adhesives</h3>
+          <p data-i18n="q3_desc">Bonded with high-strength, low-emission E1 thermosetting resins that guarantee safety in living spaces, children's bedrooms, and closed kitchens.</p>
+        </div>
+
+        <div class="quality-card">
+          <div class="quality-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+          </div>
+          <h3 data-i18n="q4_title">Micrometer Calibration</h3>
+          <p data-i18n="q4_desc">Double-sided broad-belt industrial sanders calibrate panel thickness to within ±0.2mm tolerance, ensuring effortless edge-banding and flawless joint alignment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Location Section -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="contact-card">
+        <div class="contact-left">
+          <span class="section-tag" data-i18n="contact_tag">Direct From The Yard</span>
+          <h2 class="contact-title" data-i18n="contact_title">Visit Our Yard or Order Direct</h2>
+          <p class="contact-desc" data-i18n="contact_desc">
+            Whether you need a single bundle for an artisan project or container-load wholesale dispatch across Egypt and the MENA region, our timber specialists are ready.
+          </p>
+
+          <div class="contact-methods">
+            <div class="method-box">
+              <div class="method-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <strong>Location / موقعنا على الخريطة</strong>
+                <p><a href="https://maps.app.goo.gl/ja8ouwQmbi6yzLvj6" target="_blank" rel="noopener noreferrer" style="color: var(--wood-gold); word-break: break-all;">https://maps.app.goo.gl/ja8ouwQmbi6yzLvj6 ↗</a></p>
+                <span class="arabic-location"><a href="https://maps.app.goo.gl/ja8ouwQmbi6yzLvj6" target="_blank" rel="noopener noreferrer" style="color: var(--wood-gold-light); font-weight: 600;">📍 اضغط هنا لفتح الموقع على خرائط Google Maps</a></span>
+              </div>
+            </div>
+
+            <div class="method-box">
+              <div class="method-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <strong>Direct Call & WhatsApp / الاتصال المباشر والواتساب</strong>
+                <p><a href="tel:01015176070">01015176070</a></p>
+              </div>
+            </div>
+
+            <div class="method-box">
+              <div class="method-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </div>
+              <div>
+                <strong>Email Inquiries</strong>
+                <p>sales@aldomiaty-counter.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-right">
+          <form class="inquiry-form" id="inquiryForm" onsubmit="handleInquirySubmit(event)">
+            <h3 class="form-title" data-i18n="form_title">Quick Order / Spec Request</h3>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="clientName" class="form-label" data-i18n="form_lbl_name">Your Name / Workshop Name</label>
+                <input type="text" id="clientName" class="form-control" placeholder="e.g. Master Carpenter Ahmed" required>
+              </div>
+              <div class="form-group">
+                <label for="clientPhone" class="form-label" data-i18n="form_lbl_phone">Phone / WhatsApp Number</label>
+                <input type="tel" id="clientPhone" class="form-control" placeholder="e.g. +20 10..." required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inquiryProduct" class="form-label" data-i18n="form_lbl_prod">Desired Product</label>
+              <select id="inquiryProduct" class="form-select">
+                <option value="MDF Blockboard">01. MDF Blockboard</option>
+                <option value="Ply Face Veneer Blockboard">02. Ply Face Veneer Blockboard</option>
+                <option value="MDF Sandwich Blockboard">03. MDF Sandwich Blockboard</option>
+                <option value="All Three / Bulk Assorted">All Three Formulations (Wholesale Mix)</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="inquiryQty" class="form-label" data-i18n="form_lbl_qty">Quantity (Sheets / Bundles)</label>
+                <input type="text" id="inquiryQty" class="form-control" placeholder="e.g. 25 sheets or 2 bundles">
+              </div>
+              <div class="form-group">
+                <label for="inquiryThick" class="form-label" data-i18n="form_lbl_thick">Required Thickness</label>
+                <select id="inquiryThick" class="form-select">
+                  <option value="18mm (Most Popular)">18 mm</option>
+                  <option value="16mm">16 mm</option>
+                  <option value="22mm">22 mm</option>
+                  <option value="25mm">25 mm</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inquiryNotes" class="form-label" data-i18n="form_lbl_notes">Project Details / Custom Requests</label>
+              <textarea id="inquiryNotes" class="form-control" rows="3" placeholder="Tell us about your project specifications or delivery destination..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.96.524 1.961.817 2.796.818 3.182 0 5.768-2.587 5.768-5.767 0-3.18-2.586-5.806-5.768-5.806zm3.39 8.163c-.144.405-.837.774-1.17.823-.312.043-.681.077-2.003-.456-1.585-.638-2.617-2.26-2.697-2.366-.079-.107-.64-853-.64-1.628 0-.774.407-1.155.552-1.311.144-.155.316-.194.422-.194.106 0 .211.002.304.006.098.005.228-.037.356.27.132.316.45 1.096.49 1.176.04.08.067.173.013.28-.053.107-.08.173-.16.267-.079.093-.167.208-.239.28-.079.08-.162.167-.069.327.092.16.411.678.882 1.097.607.541 1.119.708 1.278.788.16.079.253.066.347-.04.093-.107.4-.467.507-.627.107-.16.213-.133.36-.08.146.053.931.44 1.091.52.16.08.267.12.306.187.04.066.04.386-.104.791z"/></svg>
+              <span data-i18n="btn_send_inquiry">Send Inquiry Directly to WhatsApp</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Order Modal -->
+  <div class="modal-overlay" id="orderModal" onclick="closeOrderModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeOrderModal()" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <span class="section-tag" data-i18n="modal_tag">Direct Quote</span>
+        <h3 class="modal-title" id="modalProductTitle">MDF Blockboard</h3>
+        <p class="modal-desc" data-i18n="modal_desc">Fast-track your quote with our sales team via WhatsApp.</p>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label" data-i18n="modal_lbl_thick">Select Thickness</label>
+          <select id="modalThickness" class="form-select">
+            <option value="16mm">16 mm</option>
+            <option value="18mm" selected>18 mm (Standard)</option>
+            <option value="22mm">22 mm</option>
+            <option value="25mm">25 mm</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="modal_lbl_qty">Quantity Needed (Sheets)</label>
+          <input type="number" id="modalQuantity" class="form-control" value="10" min="1">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="modal_lbl_dest">Delivery City / Workshop Location</label>
+          <input type="text" id="modalLocation" class="form-control" placeholder="e.g. Cairo, Alexandria, Damietta...">
+        </div>
+
+        <button class="btn btn-whatsapp btn-block" onclick="sendModalQuoteToWhatsApp()">
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.96.524 1.961.817 2.796.818 3.182 0 5.768-2.587 5.768-5.767 0-3.18-2.586-5.806-5.768-5.806zm3.39 8.163c-.144.405-.837.774-1.17.823-.312.043-.681.077-2.003-.456-1.585-.638-2.617-2.26-2.697-2.366-.079-.107-.64-853-.64-1.628 0-.774.407-1.155.552-1.311.144-.155.316-.194.422-.194.106 0 .211.002.304.006.098.005.228-.037.356.27.132.316.45 1.096.49 1.176.04.08.067.173.013.28-.053.107-.08.173-.16.267-.079.093-.167.208-.239.28-.079.08-.162.167-.069.327.092.16.411.678.882 1.097.607.541 1.119.708 1.278.788.16.079.253.066.347-.04.093-.107.4-.467.507-.627.107-.16.213-.133.36-.08.146.053.931.44 1.091.52.16.08.267.12.306.187.04.066.04.386-.104.791z"/></svg>
+          <span data-i18n="modal_btn_wa">Chat on WhatsApp Now</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-col brand-col">
+        <div class="brand-logo">
+          <div class="logo-mark">
+            <img src="assets/logo.png" alt="الدمياطي للاستيراد والتصدير - Al-Domiaty" class="brand-logo-img">
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">AL-DOMIATY</span>
+            <span class="brand-subtitle" data-i18n="brand_subtitle">IMPORT & EXPORT • TIMBER</span>
+          </div>
+        </div>
+        <p class="footer-desc" data-i18n="footer_desc">
+          Rooted in the renowned woodworking heritage of Damietta. Delivering kiln-dried, defect-free counter panels, blockboards, and engineered timber solutions to contractors and manufacturers.
+        </p>
+        <div class="footer-origin-pill">
+          <a href="https://maps.app.goo.gl/ja8ouwQmbi6yzLvj6" target="_blank" rel="noopener noreferrer" style="color: inherit; display: inline-flex; align-items: center; gap: 6px;">
+            <span>📍 دمياط، مصر • موقعنا على خرائط Google ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading" data-i18n="footer_head_products">Our Products</h4>
+        <ul class="footer-links">
+          <li><a href="#mdf-blockboard">MDF Blockboard (كونتر إم دي إف)</a></li>
+          <li><a href="#ply-veneer">Ply Face Veneer (كونتر وش قشرة)</a></li>
+          <li><a href="#mdf-sandwich">MDF Sandwich (كونتر ساندوتش)</a></li>
+          <li><a href="#veneers">Natural Veneers (أرو، جوز، زان)</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading" data-i18n="footer_head_tools">Tools & Support</h4>
+        <ul class="footer-links">
+          <li><a href="#calculator" data-i18n="footer_link_calc">Board & Sheet Estimator</a></li>
+          <li><a href="#anatomy" data-i18n="footer_link_anatomy">Core Structure Anatomy</a></li>
+          <li><a href="#comparison" data-i18n="footer_link_specs">Technical Specs Matrix</a></li>
+          <li><a href="#contact" data-i18n="footer_link_contact">Wholesale Yard Orders</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading" data-i18n="footer_head_hours">Working Hours</h4>
+        <p class="footer-hours">
+          <strong>Saturday – Thursday:</strong><br>
+          8:00 AM – 7:00 PM<br>
+          <strong>Friday:</strong> Closed (Yard Maintenance)
+        </p>
+        <div class="whatsapp-badge">
+          <svg class="icon-sm text-gold" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.96.524 1.961.817 2.796.818 3.182 0 5.768-2.587 5.768-5.767 0-3.18-2.586-5.806-5.768-5.806zm3.39 8.163c-.144.405-.837.774-1.17.823-.312.043-.681.077-2.003-.456-1.585-.638-2.617-2.26-2.697-2.366-.079-.107-.64-853-.64-1.628 0-.774.407-1.155.552-1.311.144-.155.316-.194.422-.194.106 0 .211.002.304.006.098.005.228-.037.356.27.132.316.45 1.096.49 1.176.04.08.067.173.013.28-.053.107-.08.173-.16.267-.079.093-.167.208-.239.28-.079.08-.162.167-.069.327.092.16.411.678.882 1.097.607.541 1.119.708 1.278.788.16.079.253.066.347-.04.093-.107.4-.467.507-.627.107-.16.213-.133.36-.08.146.053.931.44 1.091.52.16.08.267.12.306.187.04.066.04.386-.104.791z"/></svg>
+          <span>WhatsApp Hotline Active 24/7</span>
+        </div>
+        <div>
+          owner   
+            Eng .Abdelsalam Ragab
+          <br>
+         المالك م / عبد السلام رجب
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; <span id="currentYear">2026</span> Al-Domiaty Counter & Wood Shop. All rights reserved.</p>
+        <p class="arabic-rights">الدمياطي للكونتر والأخشاب — جودة الصناعة الدمياطية</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Sticky WhatsApp CTA for Mobile/Desktop -->
+  <a href="https://wa.me/201015176070?text=Hello%20Al-Domiaty%20Shop%2C%20I%20would%20like%20to%20inquire%20about%20your%20blockboards." target="_blank" class="floating-whatsapp" aria-label="Contact on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.96.524 1.961.817 2.796.818 3.182 0 5.768-2.587 5.768-5.767 0-3.18-2.586-5.806-5.768-5.806zm3.39 8.163c-.144.405-.837.774-1.17.823-.312.043-.681.077-2.003-.456-1.585-.638-2.617-2.26-2.697-2.366-.079-.107-.64-853-.64-1.628 0-.774.407-1.155.552-1.311.144-.155.316-.194.422-.194.106 0 .211.002.304.006.098.005.228-.037.356.27.132.316.45 1.096.49 1.176.04.08.067.173.013.28-.053.107-.08.173-.16.267-.079.093-.167.208-.239.28-.079.08-.162.167-.069.327.092.16.411.678.882 1.097.607.541 1.119.708 1.278.788.16.079.253.066.347-.04.093-.107.4-.467.507-.627.107-.16.213-.133.36-.08.146.053.931.44 1.091.52.16.08.267.12.306.187.04.066.04.386-.104.791z"/></svg>
+    <span class="floating-tooltip">Ask for Pricing</span>
+  </a>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
