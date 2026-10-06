@@ -1,12 +1,12 @@
 /**
  * AL-DOMIATY COUNTER & TIMBER - INTERACTIVE CONTROLLER
  * Handles:
- * 1. Board & Sheet Estimator Calculator
- * 2. Veneer Texture Visualizer
- * 3. Anatomy Layer Filtering
- * 4. Bilingual Support (EN / AR)
+ * 1. Bilingual Support (Arabic as Primary, English selectable)
+ * 2. Board & Sheet Estimator Calculator
+ * 3. Veneer Texture Visualizer & Spec Updates
+ * 4. Anatomy Layer Filtering
  * 5. Quick Quote & WhatsApp Message Builders
- * 6. Responsive Navigation
+ * 6. Responsive Navigation Drawer
  */
 
 // Phone number for WhatsApp quotes (Egyptian country code +20)
@@ -19,89 +19,247 @@ const SHEET_AREA_M2 = SHEET_WIDTH_M * SHEET_HEIGHT_M; // ~2.9768 m²
 
 // State
 let currentCalcMode = 'area'; // 'area' | 'pieces'
-let currentLang = 'en';
+let currentLang = 'ar'; // Default primary language is Arabic
 
 // Veneer Database
 const VENEER_DATA = {
   oak: {
-    name_en: "Natural White Oak (أرو أبيض طبيعي)",
     name_ar: "قشرة أرو أبيض أمريكي فاخر",
-    origin_en: "North America",
+    name_en: "Natural White Oak (أرو أبيض طبيعي)",
     origin_ar: "أمريكا الشمالية",
-    desc_en: "Prominent, elegant cathedral grain with golden honey undertones. Highly sought after for Scandinavian, modern minimalist, and luxury bespoke cabinetry.",
+    origin_en: "North America",
     desc_ar: "تتميز بحبات الكاتدرائية الفاخرة ودرجات العسل الدافئة. الخيار الأول للمطابخ المودرن والدريسينج روم والأثاث الراقي.",
-    hardness_en: "High",
+    desc_en: "Prominent, elegant cathedral grain with golden honey undertones. Highly sought after for Scandinavian, modern minimalist, and luxury bespoke cabinetry.",
     hardness_ar: "عالية جداً",
-    tone_en: "Warm Honey",
+    hardness_en: "High",
     tone_ar: "عسلي دافئ",
-    pore_en: "Open Grain",
+    tone_en: "Warm Honey",
     pore_ar: "مسام مفتوحة بارزة",
+    pore_en: "Open Grain",
     cssClass: "oak-texture"
   },
   walnut: {
-    name_en: "American Black Walnut (جوز أمريكي)",
     name_ar: "قشرة جوز تركي / أمريكي طبيعي",
-    origin_en: "North America / Europe",
+    name_en: "American Black Walnut (جوز أمريكي)",
     origin_ar: "أمريكا الشمالية / أوروبا",
-    desc_en: "Deep, chocolate brown to dark amber tones with dramatic smoky grain figure. The benchmark for executive offices and luxury statement furniture.",
+    origin_en: "North America / Europe",
     desc_ar: "درجات الشوكولاتة الداكنة مع تموجات دخانية ساحرة. المعيار الذهبي للمكاتب الرئاسية وغرف النوم الفاخرة.",
-    hardness_en: "Medium-High",
+    desc_en: "Deep, chocolate brown to dark amber tones with dramatic smoky grain figure. The benchmark for executive offices and luxury statement furniture.",
     hardness_ar: "متوسطة إلى عالية",
-    tone_en: "Rich Espresso",
+    hardness_en: "Medium-High",
     tone_ar: "إسبريسو غني",
-    pore_en: "Fine to Medium",
+    tone_en: "Rich Espresso",
     pore_ar: "مسام ناعمة مخملية",
+    pore_en: "Fine to Medium",
     cssClass: "walnut-texture"
   },
   beech: {
-    name_en: "Steamed European Beech (زان أوروبي مبخر)",
     name_ar: "قشرة خشب زان أوروبي مبخر",
-    origin_en: "Central Europe",
+    name_en: "Steamed European Beech (زان أوروبي مبخر)",
     origin_ar: "وسط أوروبا",
-    desc_en: "Delicate pinkish-salmon hue with subtle ray flecks. Extremely uniform, smooth, and easily takes modern stains, washes, and protective oils.",
+    origin_en: "Central Europe",
     desc_ar: "لون وردي سلموني هادئ ومظهر متجانس وخالي من العيوب. مثالي لدهانات الأستر والصبغات الحديثة.",
-    hardness_en: "Very High",
+    desc_en: "Delicate pinkish-salmon hue with subtle ray flecks. Extremely uniform, smooth, and easily takes modern stains, washes, and protective oils.",
     hardness_ar: "شديدة الصلابة",
-    tone_en: "Warm Rosy Salmon",
+    hardness_en: "Very High",
     tone_ar: "وردي سلموني",
-    pore_en: "Closed & Dense",
+    tone_en: "Warm Rosy Salmon",
     pore_ar: "مسام مغلقة مدمجة",
+    pore_en: "Closed & Dense",
     cssClass: "beech-texture"
   },
   sapelli: {
-    name_en: "Sapelli Mahogany (سابيلي ماهوجني أفريقي)",
     name_ar: "قشرة سابيلي ماهوجني أفريقي",
-    origin_en: "West Africa",
+    name_en: "Sapelli Mahogany (سابيلي ماهوجني أفريقي)",
     origin_ar: "غرب أفريقيا",
-    desc_en: "Famous ribbon-stripe grain with lustrous golden-red iridescence. Resilient, opulent, and historically favoured in high-end yachting and classical joinery.",
+    origin_en: "West Africa",
     desc_ar: "خطوط شريطية لؤلؤية تتلألأ مع الإضاءة بلون نحاسي محمر غني. خيار القصور واليخوت والأبواب الفاخرة.",
-    hardness_en: "High",
+    desc_en: "Famous ribbon-stripe grain with lustrous golden-red iridescence. Resilient, opulent, and historically favoured in high-end yachting and classical joinery.",
     hardness_ar: "صلابة عالية",
-    tone_en: "Copper Reddish",
+    hardness_en: "High",
     tone_ar: "أحمر نحاسي",
-    pore_en: "Interlocking Grain",
+    tone_en: "Copper Reddish",
     pore_ar: "ألياف متشابكة",
+    pore_en: "Interlocking Grain",
     cssClass: "sapelli-texture"
   },
   teak: {
-    name_en: "Burmese Golden Teak (تيك ذهبي طبيعي)",
     name_ar: "قشرة تيك بورمي ذهبي طبيعي",
-    origin_en: "South-East Asia",
+    name_en: "Burmese Golden Teak (تيك ذهبي طبيعي)",
     origin_ar: "جنوب شرق آسيا",
-    desc_en: "Natural aromatic oils make it exceptionally water and decay resistant. Mellow golden-brown appearance with silky tactile smoothness.",
+    origin_en: "South-East Asia",
     desc_ar: "غني بالزيوت الطبيعية المقاومة للرطوبة والمياه. ملمس حريري فريد ومظهر ذهبي دافئ لا يتأثر بالزمن.",
-    hardness_en: "High Density",
+    desc_en: "Natural aromatic oils make it exceptionally water and decay resistant. Mellow golden-brown appearance with silky tactile smoothness.",
     hardness_ar: "كثافة عالية",
-    tone_en: "Mellow Golden",
+    hardness_en: "High Density",
     tone_ar: "ذهبي نضر",
-    pore_en: "Oily & Tight",
+    tone_en: "Mellow Golden",
     pore_ar: "زيتي مقاوم",
+    pore_en: "Oily & Tight",
     cssClass: "teak-texture"
   }
 };
 
-// Bilingual Translations (English & Arabic)
+// Bilingual Translations (Arabic Primary, English Secondary)
 const TRANSLATIONS = {
+  ar: {
+    topbar_badge: "أصالة صناعة الأخشاب والكونتر الدمياطي",
+    topbar_delivery: "توريد مباشر من المصنع ومستودعات الجملة",
+    brand_subtitle: "للاستيراد والتصدير • كونتر وأخشاب فاخرة",
+    nav_products: "المنتجات",
+    nav_anatomy: "تشريح اللوح",
+    nav_calculator: "حاسبة الألواح",
+    nav_veneers: "قشرة الأخشاب",
+    nav_specs: "المقارنة الفنية",
+    nav_quality: "معايير الجودة",
+    nav_contact: "تواصل معنا",
+    btn_calc: "حاسبة الكميات",
+    nav_btn_calc: "حاسبة الكميات",
+    btn_whatsapp: "عرض سعر فوري",
+    hero_pill: "سدائب خشب طبيعي سويد مجفف أفران 100%",
+    hero_origin: "دمياط، مصر",
+    hero_title: "المعيار الدمياطي الأرقى في <span class=\"wood-gradient-text\">ألواح الكونتر والساندوتش</span> والأخشاب المصنعة",
+    hero_desc: "من قلب قلعة صناعة الأثاث في دمياط، تقدم <strong>مؤسسة الدمياطي</strong> أعلى مستويات الجودة في ألواح الكونتر الطبيعي وساندوتش الإم دي إف. سدائب خشب سويد مجفف أفران، بدون أي فراغات داخلية، معايرة بدقة ميكرومترية لتصنيع أرقى الموديلات وغرف النوم والمطابخ.",
+    prod1_name: "كونتر إم دي إف",
+    prod1_sub: "سطح أملس • جاهز للدهان وتفريغ CNC",
+    prod2_name: "كونتر وش قشرة",
+    prod2_sub: "قشرة أرو وجوز وزان طبيعي فاخر",
+    prod3_name: "كونتر ساندوتش",
+    prod3_sub: "هيكل 5 طبقات فائق الصلابة ومقاوم للتقوس",
+    hero_cta_explore: "استعرض تشكيلة الألواح",
+    hero_cta_calc: "احسب عدد الألواح لمشروعك",
+    stat_moisture: "رطوبة مجففة بدقة بالأفران",
+    stat_cavity: "قلب مصمت خالٍ تماماً من الفراغ",
+    stat_thickness: "تخانات ومعايرات قياسية",
+    stat_eco: "غراء آمن وصحي صديق للبيئة",
+    anatomy_tag: "الهندسة وبنية اللوح",
+    anatomy_title: "لماذا يتفوق كونتر الدمياطي على الألواح التجارية العادية؟",
+    anatomy_subtitle: "على عكس الألواح التجارية التي تحوي فراغات هوائية وتسبب تقوس الأبواب وتلف المسامير، نعتمد على سدائب خشب طبيعي مجففة ومعايرة بدقة مع طبقات توازن متماثلة.",
+    layer_1_pill: "الطبقة 1",
+    layer_face_title: "سطح خارجي عالي الكثافة (MDF أو قشرة طبيعية)",
+    layer_face_desc: "سطح معاير ومصنفر بسماكة 2.5 - 3.5 مم عالي الكثافة لتوفير استواء تام لدهانات الدوكو أو كبس القشرة أو الفورميكا.",
+    layer_resin_pill: "راتنج E1",
+    layer_glue_title: "خط غراء حراري E1 مقاوم للرطوبة",
+    layer_glue_desc: "مكبوس هيدروليكياً تحت حرارة 180°C وضغط عالي يمنع تماماً تفكك الطبقات أو انفصال القشرة.",
+    layer_core_pill: "القلب المصمت",
+    layer_core_title: "سدائب خشب سويد طبيعي مجفف أفران",
+    layer_core_desc: "سدائب مجمعة ومكبوسة جانبياً بعرض 28-32 مم برطوبة متزنة 8-10% لقوة تثبيت فائقة للمفصلات والمسامير.",
+    layer_5_pill: "الطبقة 5",
+    layer_back_title: "طبقة خلفية متماثلة لمنع الشد المعاكس",
+    layer_back_desc: "طبقة مماثلة تماماً للوجه تحقق توازناً ميكانيكياً بين وجهي اللوح، مما يقضي نهائياً على إجهادات التقوس والانحناء.",
+    anatomy_hint: "فحص طبقات اللوح التفاعلي:",
+    filter_full: "كامل اللوح",
+    filter_core: "فحص القلب الداخلي",
+    filter_faces: "فحص الأسطح والغراء",
+    prod_tag: "التشكيلة الثلاثية الأساسية",
+    prod_title: "ألواح الكونتر والخشب المصنع الممتاز",
+    prod_desc: "نركز على إنتاج ثلاثة أصناف رئيسية من ألواح الكونتر تم تطويرها بدقة هندسية لتلبية متطلبات ورش النجارة الراقية، مصانع الأثاث، ومقاولي الديكور الداخلي.",
+    p1_cat: "لوح ذو وجه ناعم",
+    p1_overlay_tag: "مثالي لدهانات الدوكو واللاكيه وتفريغ الـ CNC",
+    p1_title: "كونتر إم دي إف (MDF Blockboard)",
+    p1_summary: "قلب متماسك من سدائب الخشب الطبيعي السويد، مكسو من الجهتين بطبقة إم دي إف عالي الكثافة معايرة ومصنفرة بنعومة فائقة. يمنحك قوة مسك المسامير وسهولة تشغيل الخشب الطبيعي مع نعومة واستواء الـ MDF.",
+    spec_core: "بنية القلب الداخلي:",
+    spec_faces: "طبقة الوجه والظهر:",
+    spec_thicknesses: "التخانات المتوفرة:",
+    spec_size: "الأبعاد القياسية:",
+    spec_density: "الكثافة المتوسطة:",
+    p1_spec_core: "سدائب خشب سويد طبيعي مجفف أفران",
+    p1_spec_faces: "إم دي إف ناعم معاير (2.5 مم - 3 مم)",
+    btn_order_inquiry: "طلب عرض سعر ومواصفات",
+    btn_calc_this: "حساب عدد الألواح",
+    p2_cat: "قشرة أخشاب طبيعية فاخرة",
+    p2_overlay_tag: "قشرة خشب طبيعي أرو وجوز وزان مفروزة",
+    p2_title: "كونتر وش قشرة طبيعي (Ply Face Veneer)",
+    p2_summary: "يجمع بين صلابة القلب الداخلي للكونتر وطبقات الأبلكاج المتقاطعة مع قشرة خشب طبيعي فاخرة مختارة بعناية. يمنح أعمالك مظهر الخشب الطبيعي الخالص مع عروق الأرو الأمريكي، الجوز، الزان، أو التيك.",
+    p2_spec_core: "سدائب خشب سويد طبيعي معشقة ومجففة",
+    p2_spec_faces: "أرو أبيض، جوز، زان مبخر، سابيلي، تيك",
+    spec_veneer_grade: "درجة نقاء القشرة:",
+    p2_spec_grade: "نخب أول مفروز ومطابق (0.5 - 0.6 مم)",
+    spec_finish: "حالة السطح:",
+    p2_spec_finish: "مصنفر بصنفرة ناعمة 240 جاهز للأستر والصبغات",
+    p3_cat: "هيكل مركب فائق المتانة",
+    p3_overlay_tag: "أقصى مقاومة للتقوس والانحناء في الارتفاعات العالية",
+    p3_title: "كونتر ساندوتش إم دي إف (MDF Sandwich)",
+    p3_summary: "لوح هندسي مركب مكوّن من 5 طبقات متماثلة، حيث يُحاط قلب السدائب الخشبية بطبقات مزدوجة من الـ MDF عالي الكثافة مع حواجز استقرار متقاطعة لمنع أي انحناء أو تقوس تحت الأحمال الثقيلة.",
+    p3_spec_core: "سدائب خشب سويد مدعمة بكبس هيدروليكي",
+    spec_structure: "الهيكل الهندسي:",
+    p3_spec_struct: "ساندوتش 5 طبقات متماثل الاتزان",
+    spec_warp: "مقاومة التقوس:",
+    p3_spec_warp: "أقل من 1 مم لكل متر طولي (انعدام التقوس)",
+    spec_screwhold: "قوة تماسك المسامير:",
+    veneer_tag: "التشطيبات وعروق الأخشاب",
+    veneer_title: "استعرض قشرة الخشب الطبيعي المتاحة",
+    veneer_subtitle: "تنتج ألواح كونتر وش قشرة الدمياطي بأجود أنواع القشور الطبيعية المستوردة والمفرزة بدقة. عاين درجات الألوان الطبيعية لمشروعك القادم:",
+    calc_tag: "أداة الورش الذكية",
+    calc_title: "حاسبة مسطحات وعدد ألواح الكونتر",
+    calc_desc: "سواء كنت تنفذ مطبخاً، دواليب ملابس، أو مشروع تأثيث كامل، احسب بدقة عدد ألواح الكونتر بمقاس 1220 × 2440 مم (4 × 8 قدم) مع نسبة هالك المنشار، واحصل على عرض سعر رسمي عبر واتساب بضغطة زر.",
+    calc_b1: "مقاس قياسي 1220 × 2440 مم (2.977 م² لكل لوح)",
+    calc_b2: "حساب تلقائي للوزن التقريبي وحجم الشحنة",
+    calc_b3: "تنسيق فوري لرسالة طلب الأسعار على واتساب",
+    calc_lbl_product: "اختر نوع لوح الكونتر",
+    calc_lbl_thick: "سماكة اللوح (التخانة)",
+    calc_tab_area: "الحساب بإجمالي المساحة (م²)",
+    calc_tab_pieces: "الحساب بمقاسات القطع (سم)",
+    calc_lbl_total_area: "المساحة الإجمالية المطلوبة (م²)",
+    calc_lbl_part_len: "الطول (سم)",
+    calc_lbl_part_wid: "العرض (سم)",
+    calc_lbl_qty: "العدد (قطعة)",
+    calc_lbl_waste: "نسبة هالك القص والتقطيع (Wastage)",
+    calc_waste_hint: "موصى به: 10% للتفصيل العادي، و 15% للأشكال والزوايا المعقدة.",
+    calc_res_sheets: "عدد الألواح المقدر:",
+    calc_res_gross_area: "المساحة الإجمالية:",
+    calc_res_weight: "الوزن التقريبي:",
+    calc_res_volume: "الحجم الإجمالي:",
+    calc_btn_wa: "إرسال المقايسة لتسعيرها عبر واتساب",
+    comp_tag: "مقارنة فنية مباشرة",
+    comp_title: "اختر اللوح المثالي لاحتياجات ورشتك ومشاريعك",
+    comp_subtitle: "مقارنة هندسية شاملة بين الأنواع الثلاثة لتحديد الأنسب لكل عنصر في صناعة الأثاث.",
+    th_feature: "الخاصية الفنية",
+    tr_core: "مادة القلب الداخلي",
+    tr_outer: "الطبقة السطحية الخارجية",
+    tr_surface: "نعومة واستواء السطح",
+    tr_finish_ready: "التشطيبات المناسبة",
+    tr_screwhold: "قوة تثبيت المسامير والمفصلات",
+    tr_warp_resist: "مقاومة التقوس والالتواء",
+    tr_best_use: "أفضل استخدام موصى به",
+    qual_tag: "المعيار الدمياطي",
+    qual_title: "صناعة خشبية بدون أي تهاون في الجودة",
+    qual_subtitle: "في صناعة الأثاث، اللوح قوي بقوة قلبه الداخلي. إليك معايير الجودة الصارمة المطبقة في مصانع ومستودعات الدمياطي:",
+    q1_title: "دقة تجفيف الأفران",
+    q1_desc: "تجفف السدائب في أفران مبرمجة إلكترونياً حتى اتزان رطوبة 8-10% لمنع الانكماش أو التشقق بعد التصنيع والدهان.",
+    q2_title: "خلو تام من الفراغات",
+    q2_desc: "تُرص السدائب بنظام كبس جانبي ميكانيكي لمنع أي فراغات هوائية تسبب ضعف تثبيت المسامير أو هبوط السطح.",
+    q3_title: "غراء E1 الصحي الآمن",
+    q3_desc: "نستخدم راتنجات حرارية قوية وصديقة للبيئة خالية من الفورمالدهيد الضار ومناسبة للمطابخ وغرف الأطفال المغلقة.",
+    q4_title: "معايرة ميكرومترية للسمك",
+    q4_desc: "تُصنفر الألواح بمكائن عريضة أوتوماتيكية لتحقيق استواء بسماكة دقيقة بتفاوت لا يتجاوز ±0.2 مم لتسهيل القشاط والشريط.",
+    contact_tag: "مباشرة من المستودع",
+    contact_title: "تفضل بزيارة مستودعاتنا أو اطلب شحنتك",
+    contact_desc: "سواء كنت تحتاج رزمة واحدة لورشتك أو كميات جملة وتوريدات للمشاريع والشركات في كافة محافظات مصر، فريق المبيعات جاهز لخدمتك فوراً وتجهيز الشحنة.",
+    form_title: "طلب كميات أو تسعير مواصفة",
+    form_lbl_name: "الاسم أو اسم الورشة / المصنع",
+    form_lbl_phone: "رقم الهاتف أو الواتساب",
+    form_lbl_prod: "النوع المطلوب",
+    form_lbl_qty: "الكمية المطلوبة (بالألواح أو الرزم)",
+    form_lbl_thick: "السماكة المطلوبة",
+    form_lbl_notes: "ملاحظات أو تفاصيل المشروع ومدينة التوصيل",
+    btn_send_inquiry: "إرسال الطلب مباشرة إلى واتساب",
+    modal_tag: "تسعير فوري",
+    modal_desc: "احصل على سعر فوري من مستودعاتنا عبر محادثة واتساب سريعة.",
+    modal_lbl_thick: "اختر السماكة (التخانة)",
+    modal_lbl_qty: "الكمية المطلوبة (لوح)",
+    modal_lbl_dest: "مدينة التوصيل أو موقع الورشة",
+    modal_btn_wa: "بدء المحادثة على واتساب الآن",
+    footer_desc: "الدمياطي للكونتر والأخشاب — عراقة الصناعة الدمياطية وجودة الهندسة الخشبية الحديثة لخدمة النجارين، المقاولين، وشركات الديكور.",
+    footer_head_products: "منتجاتنا",
+    footer_head_tools: "أدوات ومساعدة",
+    footer_link_calc: "حاسبة مسطحات الكونتر",
+    footer_link_anatomy: "تشريح بنية اللوح",
+    footer_link_specs: "جدول المقارنة الفنية",
+    footer_link_contact: "طلبات جملة المستودع",
+    footer_head_hours: "مواعيد العمل",
+    floating_whatsapp_tooltip: "اطلب عرض سعر فوري"
+  },
   en: {
     topbar_badge: "Damietta Heritage Timber Craftsmanship",
     topbar_delivery: "Factory Direct Delivery & Wholesale Supply",
@@ -110,6 +268,7 @@ const TRANSLATIONS = {
     nav_anatomy: "Core Anatomy",
     nav_calculator: "Board Estimator",
     nav_veneers: "Veneer Finishes",
+    nav_specs: "Technical Specs",
     nav_quality: "Why Al-Domiaty",
     nav_contact: "Contact",
     btn_calc: "Estimator",
@@ -134,15 +293,22 @@ const TRANSLATIONS = {
     anatomy_tag: "Engineering & Build",
     anatomy_title: "Why Domiaty Blockboard Stands Above Standard Wood",
     anatomy_subtitle: "Unlike hollow or uncalibrated commercial boards, our counter boards are built with seasoned finger-jointed timber strips to prevent bowing, cupping, and screw stripping.",
+    layer_1_pill: "Layer 1",
     layer_face_title: "Smooth Calibrated Face (MDF / Natural Veneer)",
     layer_face_desc: "2.5mm - 3.5mm ultra-dense calibrated surface. Defect-free for flawless paint finish, vacuum press, or high-pressure laminate.",
+    layer_resin_pill: "Resin E1",
     layer_glue_title: "E1 Moisture-Resistant Adhesive Line",
     layer_glue_desc: "Hot-pressed under 180°C and 1.8 MPa hydraulic pressure for permanent delamination resistance.",
+    layer_core_pill: "Solid Core",
     layer_core_title: "Kiln-Dried Solid Pine / Hardwood Batons",
     layer_core_desc: "Edge-glued solid timber strips (28mm–32mm width). Sourced from sustainable forests, seasoned to 8-10% moisture content.",
+    layer_5_pill: "Layer 5",
     layer_back_title: "Symmetrical Balancing Backer Sheet",
     layer_back_desc: "Identical density backer ensures absolute tension equilibrium across both faces, eliminating internal warping stresses.",
-    anatomy_hint: "Interactive Cross-Section Inspection",
+    anatomy_hint: "Interactive Cross-Section Inspection:",
+    filter_full: "Full Panel",
+    filter_core: "Inspect Core",
+    filter_faces: "Inspect Faces & Resin",
     prod_tag: "The Signature Three",
     prod_title: "Engineered Timber Panels & Blockboards",
     prod_desc: "We specialize exclusively in three premier blockboard formulations engineered for precision cabinetry, high-end furniture fabrication, and structural architectural partitions.",
@@ -195,7 +361,7 @@ const TRANSLATIONS = {
     calc_lbl_total_area: "Total Net Surface Needed (m²)",
     calc_lbl_part_len: "Length (cm)",
     calc_lbl_part_wid: "Width (cm)",
-    calc_lbl_qty: "Quantity",
+    calc_lbl_qty: "Quantity (Pieces)",
     calc_lbl_waste: "Cutting Kerf & Wastage Allowance",
     calc_waste_hint: "Recommended: 10% for standard cabinetry, 15% for complex angle cuts.",
     calc_res_sheets: "Estimated Sheets Needed:",
@@ -249,156 +415,8 @@ const TRANSLATIONS = {
     footer_link_anatomy: "Core Structure Anatomy",
     footer_link_specs: "Technical Specs Matrix",
     footer_link_contact: "Wholesale Yard Orders",
-    footer_head_hours: "Working Hours"
-  },
-  ar: {
-    topbar_badge: "أصالة صناعة الأخشاب والكونتر الدمياطي",
-    topbar_delivery: "توريد مباشر من المصنع ومستودعات الجملة",
-    brand_subtitle: "للاستيراد والتصدير • كونتر وأخشاب فاخرة",
-    nav_products: "المنتجات",
-    nav_anatomy: "تشريح اللوح",
-    nav_calculator: "حاسبة الألواح",
-    nav_veneers: "أنواع القشرة",
-    nav_quality: "لماذا الدمياطي",
-    nav_contact: "تواصل معنا",
-    btn_calc: "الحاسبة",
-    nav_btn_calc: "حاسبة الألواح",
-    btn_whatsapp: "طلب تسعير فوري",
-    hero_pill: "سدائب سويد طبيعي مجفف أفران 100%",
-    hero_origin: "دمياط، مصر",
-    hero_title: "القمة في صناعة <span class=\"wood-gradient-text\">ألواح الكونتر الخشبي</span> والمسطحات الهندسية",
-    hero_desc: "من قلب عاصمة الموبيليا المصرية بدمياط، تقدم <strong>مؤسسة الدمياطي</strong> ألواح كونتر فائقة الثبات والاستقامة. معالجة بأحدث أفران التجفيف، بدون أي فراغات داخلية، وبأسطح فائقة النعومة لأفضل مصنعي الأثاث والديكور.",
-    prod1_name: "كونتر إم دي إف",
-    prod1_sub: "سطح ناعم • للدهان والـ CNC",
-    prod2_name: "كونتر وش قشرة طبيعي",
-    prod2_sub: "قشرة أرو وجوز وزان فاخرة",
-    prod3_name: "كونتر ساندوتش إم دي إف",
-    prod3_sub: "متعدد الطبقات فائق الصلابة",
-    hero_cta_explore: "تصفح خط الإنتاج",
-    hero_cta_calc: "احسب عدد الألواح لمشروعك",
-    stat_moisture: "نسبة رطوبة مجففة 8-10%",
-    stat_cavity: "ضمان خلو تام من السوس والفراغ",
-    stat_thickness: "تخانات متوفرة 16-25 مم",
-    stat_eco: "غراء E1 صحي خالي من الانبعاثات",
-    anatomy_tag: "الهندسة والبناء",
-    anatomy_title: "لماذا يتفوق كونتر الدمياطي على الأخشاب التجارية؟",
-    anatomy_subtitle: "على عكس الألواح التجارية المعرضة للتقوس والشرخ، يُبنى لوح الدمياطي من سدائب خشبية مصفوفة ومضغوطة هيدروليكياً لضمان ثبات المسامير وعدم التقوس مدى الحياة.",
-    layer_face_title: "وش كبس عالي الكثافة (MDF أو قشرة طبيعية)",
-    layer_face_desc: "سماكة متجانسة 2.5 - 3.5 مم بدون أي نتوءات لضمان دهان دوكو أو لاكيه أو تفريغ راوتر CNC بدقة متناهية.",
-    layer_glue_title: "خط غراء E1 مقاوم للرطوبة والحرارة",
-    layer_glue_desc: "مكبوس على الساخن تحت 180 درجة وضغط 1.8 ميجا باسكال لمنع فك الطبقات نهائياً.",
-    layer_core_title: "قلب سدائب خشب سويد/زان مجفف أفران",
-    layer_core_desc: "سدائب متلاصقة بعرض 28-32 مم معالجة ضد الرطوبة ومعاد ضبط استقامتها لمنع الالتواء.",
-    layer_back_title: "طبقة ظهر موازنة للتمدد والانكماش",
-    layer_back_desc: "تعادل إجهادات الشد السطحي بدقة بالغة مما يجعل اللوح مستقيماً ومستوياً تماماً.",
-    anatomy_hint: "فحص طبقات اللوح تفاعلياً",
-    prod_tag: "التشكيلة الأساسية",
-    prod_title: "ألواح الكونتر والمسطحات الخشبية",
-    prod_desc: "نختص بتصنيع وتوريد ثلاثة منتجات رئيسية صُممت خصيصاً لأعمال المطابخ الراقية، غرف النوم، والديكورات الداخلية الهندسية.",
-    p1_cat: "سطح ناعم للدهان",
-    p1_overlay_tag: "الخيار الأمثل للدهان الأملس وتفريغ الـ CNC",
-    p1_title: "كونتر إم دي إف (MDF Blockboard)",
-    p1_summary: "قلب كونتر من السدائب الخشبية مكسو بطبقتين متماثلتين من الـ MDF عالي الكثافة. يجمع بين قوة مسك المسامير وسهولة حمل الكونتر مع نعومة واستواء سطح الإم دي إف.",
-    spec_core: "هيكل القلب:",
-    spec_faces: "الوش والظهر:",
-    spec_thicknesses: "التخانات المتوفرة:",
-    spec_size: "الأبعاد القياسية:",
-    spec_density: "متوسط الكثافة:",
-    p1_spec_core: "سدائب خشب سويد طبيعي مجفف",
-    p1_spec_faces: "إم دي إف ناعم معاير (2.5 - 3 مم)",
-    btn_order_inquiry: "طلب الأسعار والمواصفات",
-    btn_calc_this: "حساب الكمية المطلوبة",
-    p2_cat: "قشرة خشب طبيعي فاخر",
-    p2_overlay_tag: "قشرة خشب طبيعي أصلي A/B",
-    p2_title: "كونتر وش قشرة (Ply Face Veneer)",
-    p2_summary: "كونتر مصفح بقشرة طبيعية مختارة بعناية (أرو أمريكي، جوز تركي، زان، أو سابيلي) مع طبقة أبلكاش تعريض لتحقيق أقصى استقرار لمظهر الأخشاب الطبيعية الفاخرة.",
-    p2_spec_core: "سدائب سويد معشقة finger-jointed",
-    p2_spec_faces: "قشرة أرو، جوز، زان، سابيلي، تيك",
-    spec_veneer_grade: "درجة القشرة:",
-    p2_spec_grade: "درجة A/B تقفيل كتاب Book-matched",
-    spec_finish: "حالة السطح:",
-    p2_spec_finish: "صنفرة 240 جاهز للتلميع والصبغة",
-    p3_cat: "ساندوتش فائق التحمل",
-    p3_overlay_tag: "أعلى مقاومة للتقوس والانحناء للأبواب العالية",
-    p3_title: "كونتر ساندوتش إم دي إف (Sandwich)",
-    p3_summary: "هيكل مركب من 5 طبقات متناظرة يدمج ألواح الـ MDF الخارجية مع حواجز تقوية متقاطعة حول قلب خشب صلب، مانعاً أي اعوجاج حتى في درف الدواليب التي تتجاوز 2.4 متر.",
-    p3_spec_core: "سدائب صنوبر مدمجة عالية المقاومة",
-    spec_structure: "البنية التركيبية:",
-    p3_spec_struct: "ساندوتش خماسي الطبقات متماثل",
-    spec_warp: "مقاومة التقوس:",
-    p3_spec_warp: "أقل من 1 مم لكل متر طولي",
-    spec_screwhold: "قوة مسك المسمار:",
-    veneer_tag: "التشطيبات والملامس",
-    veneer_title: "استكشف ملامس القشرة الطبيعية",
-    veneer_subtitle: "تُنتج ألواح الكونتر وش القشرة لدينا من أفضل جذوع الأخشاب الطبيعية. اختر الخامة المناسبة لمشروعك لمعاينة ألوانها وخصائصها.",
-    calc_tag: "أداة النجار والمهندس",
-    calc_title: "حاسبة مسطحات وكميات ألواح الكونتر",
-    calc_desc: "سواء كنت تصنع مطبخاً أو دواليب ملابس أو قواطع ديكورية، احسب فورياً عدد ألواح مقاس 1220 × 2440 مم مع حساب هالك السحج والقص، واطلب عرض سعر مباشر عبر واتساب.",
-    calc_b1: "مقاس قياسي 1220 × 2440 مم (2.977 م² للوح)",
-    calc_b2: "حساب تلقائي للوزن التقديري والحجم",
-    calc_b3: "تجهيز تلقائي لرسالة الواتساب للتسعير",
-    calc_lbl_product: "اختر نوع الكونتر المطلوب",
-    calc_lbl_thick: "سماكة اللوح (التخانة)",
-    calc_tab_area: "الحساب بالمساحة الإجمالية (م²)",
-    calc_tab_pieces: "الحساب بقطع الموبيليا (سم)",
-    calc_lbl_total_area: "إجمالي المساحة الصافية المطلوبة (م²)",
-    calc_lbl_part_len: "الطول (سم)",
-    calc_lbl_part_wid: "العرض (سم)",
-    calc_lbl_qty: "العدد",
-    calc_lbl_waste: "نسبة هالك القص والسحج (Kerf)",
-    calc_waste_hint: "يُنصح بـ 10% للأعمال المعتادة، و15% للتفاصيل والزوايا الدقيقة.",
-    calc_res_sheets: "عدد الألواح المقدر:",
-    calc_res_gross_area: "المساحة الإجمالية:",
-    calc_res_weight: "الوزن التقريبي:",
-    calc_res_volume: "الحجم الإجمالي:",
-    calc_btn_wa: "إرسال المقايسة لتسعيرها عبر واتساب",
-    comp_tag: "مقارنة فنية مباشرة",
-    comp_title: "اختر اللوح المثالي لاحتياجات ورشتك",
-    comp_subtitle: "مقارنة هندسية بين الأنواع الثلاثة لتحديد الأنسب لكل عنصر في صناعة الأثاث.",
-    th_feature: "الخاصية الفنية",
-    tr_core: "مادة القلب الداخلي",
-    tr_outer: "الطبقة السطحية الخارجية",
-    tr_surface: "نعومة واستواء السطح",
-    tr_finish_ready: "التشطيبات المناسبة",
-    tr_screwhold: "قوة تثبيت المسامير والمفصلات",
-    tr_warp_resist: "مقاومة التقوس والالتواء",
-    tr_best_use: "أفضل استخدام موصى به",
-    qual_tag: "المعيار الدمياطي",
-    qual_title: "صناعة خشبية بدون أي تهاون في الجودة",
-    qual_subtitle: "في صناعة الأثاث، اللوح قوي بقوة قلبه الداخلي. إليك معايير الجودة المطبقة في مستودعات ومصانع الدمياطي:",
-    q1_title: "دقة تجفيف الأفران",
-    q1_desc: "تجفف السدائب في أفران مبرمجة إلكترونياً حتى اتزان رطوبة 8-10% لمنع الانكماش أو التشقق بعد التصنيع والدهان.",
-    q2_title: "خلو تام من الفراغات",
-    q2_desc: "تُرص السدائب بنظام كبس جانبي ميكانيكي لمنع أي فراغات هوائية تسبب ضعف تثبيت المسامير أو هبوط السطح.",
-    q3_title: "غراء E1 الصحي الآمن",
-    q3_desc: "نستخدم راتنجات حرارية قوية وصديقة للبيئة خالية من الفورمالدهيد الضار ومناسبة للمطابخ وغرف الأطفال المغلقة.",
-    q4_title: "معايرة ميكرومترية للسمك",
-    q4_desc: "تُصنفر الألواح بمكائن عريضة أوتوماتيكية لتحقيق استواء بسماكة دقيقة بتفاوت لا يتجاوز ±0.2 مم لتسهيل القشاط والشريط.",
-    contact_tag: "مباشرة من المستودع",
-    contact_title: "تفضل بزيارة مستودعاتنا أو اطلب شحنتك",
-    contact_desc: "سواء كنت تحتاج رزمة واحدة لورشتك أو كميات جملة للمشاريع والشركات في كافة محافظات مصر، فريق المبيعات جاهز لخدمتك فوراً.",
-    form_title: "طلب كميات أو تسعير مواصفة",
-    form_lbl_name: "الاسم أو اسم الورشة / المصنع",
-    form_lbl_phone: "رقم الهاتف أو الواتساب",
-    form_lbl_prod: "النوع المطلوب",
-    form_lbl_qty: "الكمية المطلوبة (بالألواح أو الرزم)",
-    form_lbl_thick: "السماكة المطلوبة",
-    form_lbl_notes: "ملاحظات أو تفاصيل المشروع ومدينة التوصيل",
-    btn_send_inquiry: "إرسال الطلب مباشرة إلى واتساب",
-    modal_tag: "تسعير فوري",
-    modal_desc: "احصل على سعر فوري من مستودعاتنا عبر محادثة واتساب سريعة.",
-    modal_lbl_thick: "اختر السماكة",
-    modal_lbl_qty: "الكمية المطلوبة (لوح)",
-    modal_lbl_dest: "مدينة التوصيل أو الورشة",
-    modal_btn_wa: "بدء المحادثة على واتساب الآن",
-    footer_desc: "الدمياطي للكونتر والأخشاب — عراقة الصناعة الدمياطية وجودة الهندسة الخشبية الحديثة لخدمة النجارين، المقاولين، وشركات الديكور.",
-    footer_head_products: "منتجاتنا",
-    footer_head_tools: "أدوات ومساعدة",
-    footer_link_calc: "حاسبة مسطحات الكونتر",
-    footer_link_anatomy: "تشريح بنية اللوح",
-    footer_link_specs: "جدول المقارنة الفنية",
-    footer_link_contact: "طلبات جملة المستودع",
-    footer_head_hours: "مواعيد العمل"
+    footer_head_hours: "Working Hours",
+    floating_whatsapp_tooltip: "Request Instant Quote"
   }
 };
 
@@ -425,21 +443,35 @@ function initNavigation() {
   const header = document.getElementById('mainHeader');
 
   if (toggleBtn && navMenu) {
-    toggleBtn.addEventListener('click', () => {
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleBtn.classList.toggle('active');
       navMenu.classList.toggle('open');
+      document.body.classList.toggle('menu-open');
     });
 
-    // Close menu when clicking links
+    // Close menu when clicking any nav link
     navMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
+        toggleBtn.classList.remove('active');
         navMenu.classList.remove('open');
+        document.body.classList.remove('menu-open');
       });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navMenu.contains(e.target) && !toggleBtn.contains(e.target) && navMenu.classList.contains('open')) {
+        toggleBtn.classList.remove('active');
+        navMenu.classList.remove('open');
+        document.body.classList.remove('menu-open');
+      }
     });
   }
 
-  // Header scroll shadow
+  // Header scroll shadow and compacting
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+    if (window.scrollY > 30) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
@@ -448,16 +480,17 @@ function initNavigation() {
 }
 
 /* ==========================================================================
-   BILINGUAL SUPPORT (ENGLISH <-> ARABIC)
+   BILINGUAL SUPPORT (ARABIC PRIMARY <-> ENGLISH)
    ========================================================================== */
 function initLanguage() {
-  const savedLang = localStorage.getItem('aldomiaty_lang') || 'en';
+  // Default to Arabic unless the user previously explicitly chose English
+  const savedLang = localStorage.getItem('aldomiaty_lang') || 'ar';
   setLanguage(savedLang);
 
   const langBtn = document.getElementById('langToggleBtn');
   if (langBtn) {
     langBtn.addEventListener('click', () => {
-      const nextLang = currentLang === 'en' ? 'ar' : 'en';
+      const nextLang = currentLang === 'ar' ? 'en' : 'ar';
       setLanguage(nextLang);
     });
   }
@@ -467,15 +500,18 @@ function setLanguage(lang) {
   currentLang = lang;
   localStorage.setItem('aldomiaty_lang', lang);
   const html = document.documentElement;
+  const langLabel = document.getElementById('langLabel');
 
   if (lang === 'ar') {
     html.setAttribute('lang', 'ar');
     html.setAttribute('dir', 'rtl');
-    document.getElementById('langLabel').textContent = 'English';
+    if (langLabel) langLabel.textContent = 'English';
+    document.title = "الدمياطي للكونتر والأخشاب | أجود أنواع ألواح الكونتر والساندوتش والقشرة";
   } else {
     html.setAttribute('lang', 'en');
     html.setAttribute('dir', 'ltr');
-    document.getElementById('langLabel').textContent = 'العربية';
+    if (langLabel) langLabel.textContent = 'العربية';
+    document.title = "Al-Domiaty Counter & Timber | Premium Blockboard Solutions (الدمياطي)";
   }
 
   // Update all elements with data-i18n
@@ -517,7 +553,6 @@ function selectVeneer(key) {
   // Update sample view classes
   const sample = document.getElementById('veneerSampleView');
   if (sample) {
-    // Remove previous texture classes
     sample.className = 'veneer-texture-sample ' + VENEER_DATA[key].cssClass;
   }
 
@@ -532,10 +567,16 @@ function refreshVeneerText() {
   const nameEl = document.getElementById('veneerName');
   const originEl = document.getElementById('veneerOrigin');
   const descEl = document.getElementById('veneerDesc');
+  const hardnessEl = document.getElementById('vPropHardness');
+  const toneEl = document.getElementById('vPropTone');
+  const poreEl = document.getElementById('vPropPore');
 
   if (nameEl) nameEl.textContent = isAr ? data.name_ar : data.name_en;
   if (originEl) originEl.textContent = isAr ? data.origin_ar : data.origin_en;
   if (descEl) descEl.textContent = isAr ? data.desc_ar : data.desc_en;
+  if (hardnessEl) hardnessEl.textContent = isAr ? data.hardness_ar : data.hardness_en;
+  if (toneEl) toneEl.textContent = isAr ? data.tone_ar : data.tone_en;
+  if (poreEl) poreEl.textContent = isAr ? data.pore_ar : data.pore_en;
 }
 
 /* ==========================================================================
@@ -601,85 +642,89 @@ function setCalcMode(mode) {
   const modePieces = document.getElementById('modePieces');
 
   if (mode === 'area') {
-    tabArea.classList.add('active');
-    tabPieces.classList.remove('active');
-    modeArea.classList.remove('hidden');
-    modePieces.classList.add('hidden');
+    if (tabArea) tabArea.classList.add('active');
+    if (tabPieces) tabPieces.classList.remove('active');
+    if (modeArea) modeArea.classList.remove('hidden');
+    if (modePieces) modePieces.classList.add('hidden');
   } else {
-    tabPieces.classList.add('active');
-    tabArea.classList.remove('active');
-    modePieces.classList.remove('hidden');
-    modeArea.classList.add('hidden');
+    if (tabPieces) tabPieces.classList.add('active');
+    if (tabArea) tabArea.classList.remove('active');
+    if (modePieces) modePieces.classList.remove('hidden');
+    if (modeArea) modeArea.classList.add('hidden');
   }
 
   runCalculation();
 }
 
-function quickCalculate(productAnchor) {
-  const prodSelect = document.getElementById('calcProduct');
-  if (!prodSelect) return;
-
-  if (productAnchor === 'mdf-blockboard') {
-    prodSelect.selectedIndex = 0;
-  } else if (productAnchor === 'ply-veneer') {
-    prodSelect.selectedIndex = 1;
-  } else if (productAnchor === 'mdf-sandwich') {
-    prodSelect.selectedIndex = 2;
+function quickCalculate(productId) {
+  const select = document.getElementById('calcProduct');
+  if (select) {
+    if (productId === 'mdf-blockboard') select.value = 'MDF Blockboard';
+    else if (productId === 'ply-veneer') select.value = 'Ply Face Veneer Blockboard';
+    else if (productId === 'mdf-sandwich') select.value = 'MDF Sandwich Blockboard';
   }
-
+  const calcSec = document.getElementById('calculator');
+  if (calcSec) {
+    calcSec.scrollIntoView({ behavior: 'smooth' });
+  }
   runCalculation();
-  const calcSection = document.getElementById('calculator');
-  if (calcSection) {
-    calcSection.scrollIntoView({ behavior: 'smooth' });
-  }
 }
 
 function runCalculation() {
-  // 1. Thickness
+  // 1. Get Selected Thickness
   const thickRadio = document.querySelector('input[name="boardThick"]:checked');
   const thicknessMm = thickRadio ? parseFloat(thickRadio.value) : 18;
+  const thicknessM = thicknessMm / 1000;
 
-  // 2. Wastage
-  const wasteInput = document.getElementById('wastageInput');
-  const wasteValEl = document.getElementById('wastageInputVal');
-  const wastagePercent = wasteInput ? parseFloat(wasteInput.value) : 10;
-  if (wasteValEl) wasteValEl.textContent = wastagePercent + '%';
-
-  // 3. Net Surface Area
-  let netAreaM2 = 0;
-
-  if (currentCalcMode === 'area') {
-    const areaInput = document.getElementById('areaInput');
-    const areaValEl = document.getElementById('areaInputVal');
-    netAreaM2 = areaInput ? parseFloat(areaInput.value) : 15;
-    if (areaValEl) areaValEl.textContent = netAreaM2 + ' m²';
-  } else {
-    const pLenCm = parseFloat(document.getElementById('pieceLength').value) || 0;
-    const pWidCm = parseFloat(document.getElementById('pieceWidth').value) || 0;
-    const pQty = parseInt(document.getElementById('pieceQty').value) || 0;
-    // Each piece area in m² = (cm / 100) * (cm / 100)
-    netAreaM2 = (pLenCm / 100) * (pWidCm / 100) * pQty;
+  // 2. Get Selected Product Density
+  const prodSelect = document.getElementById('calcProduct');
+  let density = 660; // kg/m³
+  if (prodSelect && prodSelect.selectedOptions.length > 0) {
+    const dataDensity = prodSelect.selectedOptions[0].getAttribute('data-density');
+    if (dataDensity) density = parseFloat(dataDensity);
   }
 
-  // 4. Gross Area with wastage
-  const grossAreaM2 = netAreaM2 * (1 + (wastagePercent / 100));
+  // 3. Get Wastage
+  const wastageSlider = document.getElementById('wastageInput');
+  const wastagePct = wastageSlider ? parseFloat(wastageSlider.value) : 10;
+  const wastageValEl = document.getElementById('wastageInputVal');
+  if (wastageValEl) wastageValEl.textContent = wastagePct + '%';
 
-  // 5. Total sheets required (Ceil to whole boards)
+  // 4. Calculate Net Area in m²
+  let netAreaM2 = 0;
+  if (currentCalcMode === 'area') {
+    const areaInput = document.getElementById('areaInput');
+    netAreaM2 = areaInput ? parseFloat(areaInput.value) : 15;
+    const areaValBadge = document.getElementById('areaInputVal');
+    const isAr = currentLang === 'ar';
+    if (areaValBadge) areaValBadge.textContent = isAr ? `${netAreaM2} م²` : `${netAreaM2} m²`;
+  } else {
+    // Pieces mode: L(cm) * W(cm) * Qty
+    const lenCm = parseFloat(document.getElementById('pieceLength')?.value || 200);
+    const widCm = parseFloat(document.getElementById('pieceWidth')?.value || 60);
+    const qty = parseFloat(document.getElementById('pieceQty')?.value || 12);
+
+    const singlePieceM2 = (lenCm / 100) * (widCm / 100);
+    netAreaM2 = singlePieceM2 * qty;
+  }
+
+  // 5. Apply Wastage Allowance
+  const grossAreaM2 = netAreaM2 * (1 + wastagePct / 100);
+
+  // 6. Calculate Sheets Needed (Ceil to nearest full sheet)
   const sheetsNeeded = Math.max(1, Math.ceil(grossAreaM2 / SHEET_AREA_M2));
 
-  // 6. Selected Product Density
-  const prodSelect = document.getElementById('calcProduct');
-  const selectedOption = prodSelect ? prodSelect.options[prodSelect.selectedIndex] : null;
-  const density = selectedOption ? (parseFloat(selectedOption.getAttribute('data-density')) || 670) : 670;
-
-  // 7. Volume and Weight
-  // Volume = sheetsNeeded * (1.22 * 2.44 * (thicknessMm / 1000))
-  const volumeM3 = sheetsNeeded * (SHEET_AREA_M2 * (thicknessMm / 1000));
+  // 7. Calculate Weight and Volume of the required sheets
+  const totalRealAreaM2 = sheetsNeeded * SHEET_AREA_M2;
+  const volumeM3 = totalRealAreaM2 * thicknessM;
   const totalWeightKg = Math.round(volumeM3 * density);
 
   // 8. Update UI displays
   const isAr = currentLang === 'ar';
   const sheetUnit = isAr ? 'لوح' : 'Sheets';
+  const kgUnit = isAr ? 'كجم' : 'kg';
+  const m2Unit = isAr ? 'م²' : 'm²';
+  const m3Unit = isAr ? 'م³' : 'm³';
 
   const resSheetsEl = document.getElementById('resSheets');
   const resGrossAreaEl = document.getElementById('resGrossArea');
@@ -687,9 +732,9 @@ function runCalculation() {
   const resVolumeEl = document.getElementById('resVolume');
 
   if (resSheetsEl) resSheetsEl.innerHTML = `${sheetsNeeded} <small>${sheetUnit}</small>`;
-  if (resGrossAreaEl) resGrossAreaEl.textContent = `${grossAreaM2.toFixed(2)} m²`;
-  if (resWeightEl) resWeightEl.textContent = `~${totalWeightKg} kg`;
-  if (resVolumeEl) resVolumeEl.textContent = `${volumeM3.toFixed(2)} m³`;
+  if (resGrossAreaEl) resGrossAreaEl.textContent = `${grossAreaM2.toFixed(2)} ${m2Unit}`;
+  if (resWeightEl) resWeightEl.textContent = `~${totalWeightKg} ${kgUnit}`;
+  if (resVolumeEl) resVolumeEl.textContent = `${volumeM3.toFixed(2)} ${m3Unit}`;
 }
 
 /* ==========================================================================
@@ -697,18 +742,18 @@ function runCalculation() {
    ========================================================================== */
 function sendCalculatedQuoteToWhatsApp() {
   const prodSelect = document.getElementById('calcProduct');
-  const productName = prodSelect ? prodSelect.options[prodSelect.selectedIndex].text : "Al-Domiaty Counter Wood";
+  const productName = prodSelect ? prodSelect.options[prodSelect.selectedIndex].text : "كونتر الدمياطي";
   const thickRadio = document.querySelector('input[name="boardThick"]:checked');
-  const thickness = thickRadio ? thickRadio.value + 'mm' : '18mm';
+  const thickness = thickRadio ? thickRadio.value + ' مم' : '18 مم';
   
   const sheetsEl = document.getElementById('resSheets');
-  const sheets = sheetsEl ? sheetsEl.innerText.replace('\n', ' ') : '6 Sheets';
+  const sheets = sheetsEl ? sheetsEl.innerText.replace('\n', ' ') : '6 لوح';
   const grossArea = document.getElementById('resGrossArea').textContent;
   const weight = document.getElementById('resWeight').textContent;
 
   let message = "";
   if (currentLang === 'ar') {
-    message = `السلام عليكم ورحمة الله وبركاته، مؤسسة الدمياطي للكونتر والأخشاب،\nأود الاستفسار وطلب عرض سعر للكمية التالية:\n- المنتج: ${productName}\n- التخانة: ${thickness}\n- عدد الألواح المقدرة: ${sheets}\n- المساحة المحسوبة: ${grossArea}\n- الوزن التقديري: ${weight}\nأرجو إفادتي بالسعر وتوافر الشحن. شكراً جزيلاً!`;
+    message = `السلام عليكم ورحمة الله وبركاته، مؤسسة الدمياطي للكونتر والأخشاب،\nأود الاستفسار وطلب عرض سعر للكمية التالية:\n- الصنف: ${productName}\n- التخانة: ${thickness}\n- عدد الألواح المقدرة: ${sheets}\n- المساحة الإجمالية: ${grossArea}\n- الوزن التقديري: ${weight}\nأرجو إفادتي بالسعر وتوافر الشحن. شكراً جزيلاً!`;
   } else {
     message = `Hello Al-Domiaty Counter & Timber,\nI would like to request an official price quote for:\n- Product: ${productName}\n- Thickness: ${thickness}\n- Estimated Sheets: ${sheets}\n- Total Area: ${grossArea}\n- Estimated Weight: ${weight}\nPlease provide pricing and delivery timeline. Thank you!`;
   }
@@ -718,7 +763,7 @@ function sendCalculatedQuoteToWhatsApp() {
 }
 
 /* Modal Open & WhatsApp Submission */
-let modalTargetProduct = "MDF Blockboard";
+let modalTargetProduct = "كونتر إم دي إف (MDF Blockboard)";
 
 function openOrderModal(productName, defaultThick = "18mm") {
   modalTargetProduct = productName;
@@ -743,7 +788,7 @@ function closeOrderModal(event) {
 function sendModalQuoteToWhatsApp() {
   const thick = document.getElementById('modalThickness').value;
   const qty = document.getElementById('modalQuantity').value || 10;
-  const location = document.getElementById('modalLocation').value || "Egypt";
+  const location = document.getElementById('modalLocation').value || "دمياط / مصر";
 
   let message = "";
   if (currentLang === 'ar') {
@@ -764,7 +809,7 @@ function handleInquirySubmit(event) {
   const name = document.getElementById('clientName').value;
   const phone = document.getElementById('clientPhone').value;
   const product = document.getElementById('inquiryProduct').value;
-  const qty = document.getElementById('inquiryQty').value || "Unspecified";
+  const qty = document.getElementById('inquiryQty').value || "غير محدد";
   const thick = document.getElementById('inquiryThick').value;
   const notes = document.getElementById('inquiryNotes').value;
 
