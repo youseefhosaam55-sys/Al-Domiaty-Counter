@@ -1726,7 +1726,7 @@ button, input, select, textarea {
 
 .specs-matrix-table th.col-highlight,
 .specs-matrix-table td.col-highlight {
-  background: rgba(178, 132, 59, 0.08);
+  background:  rgba(7, 13, 23, 0.95);
 }
 
 .specs-matrix-table tbody tr:hover {
